@@ -1,0 +1,11 @@
+.bt{
+    margin: 4%;
+}
+.x{
+
+}
+@media screen and (min-width: 480px) {
+    .x {
+      width:30%;
+    }
+  }

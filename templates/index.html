@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="static/css/style.css">
+
+
+    <title>Document</title>
+</head>
+
+<body onload="myfunc1()">
+
+    
+    <nav class="navbar navbar-expand-md navbar-dark bg-warning fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold fs-3 mx-4 text-black " href="#">Aashay Jain</a>
+
+            <button class="navbar-toggler ms-auto bg-dark" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseNavbar">
+                <span class="navbar-toggler-icon fw-bold"></span>
+            </button>
+
+            <div class="navbar-collapse collapse" id="collapseNavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item active  ">
+                        <a class="nav-link fw-bold fs-4 mx-2 text-black text-center" href="#">Home</a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a class="nav-link fw-bold fs-4 mx-2 text-black text-center" href="#about">About</a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a class="nav-link fw-bold fs-4 mx-2 text-black text-center" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item active  ">
+                        <a class="nav-link fw-bold fs-4 mx-2 text-black text-center" href="#education">Education</a>
+                    </li>
+                    <li class="nav-item active  ">
+                        <a class="nav-link fw-bold fs-4 mx-2 text-black text-center" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item active  ">
+                        <a class="nav-link fw-bold fs-4 mx-2 text-black text-center " href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item active  ">
+                        <div style="padding-top: 2%;"> <a
+                                class="nav-link fw-bold fs-5 mx-2 text-light text-center rounded" href="/login"
+                                style="border-radius:10% ;background-color: blue;" id="l">{{data}}</a></div>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+    </nav>
+
+    <div style="background-color: aqua;padding-bottom: 5%;">
+
+        <div class="row fs-1 fw-bold " style="padding-top: 20vh ;padding-left: 5%;padding-right: 5%;height:100vh"
+            className="x">
+            <div class="col" style="width:30%">
+                <img src="static/images/hello.gif" alt=""
+                    style="border-radius:50%;min-width:20vh;margin-left:15%;margin-right:10%;width:60%;min-height: 50vh;margin-top: 20vh;float:right"
+                    id="hello">
+            </div>
+
+            <div class="col bubble bubble-bottom-left text-light mx-3  text-center "
+                style="height:fit-content;border-radius: 10%;">
+
+                <div class="text-dark my-3 fs-1" style="padding-top: 4vh;" id="mg1"> </div>
+                <div class="text-dark my-5 fs-1" id="mg2"> </div>
+
+
+                <a href="https://www.linkedin.com/in/aashay-jain-132b0b227" target="_blank"><i
+                        class="fab fa-linkedin fs-1 mx-1"></i></a>
+                <a href="https://github.com/jainAashay/" target="_blank"><i class="fab fa-github fs-1 mx-1"
+                        style="color:black;"></i></a>
+
+
+
+                <a href="https://instagram.com/aashay_jain20?igshid=ZDdkNTZiNTM=" target="_blank" style="color:red;"><i
+                        class="fab fa-instagram fs-1 mx-1"></i></a>
+
+
+            </div>
+
+
+        </div>
+        <div class="col bubble bubble-bottom-left text-light mx-3 text-center "
+            style="height:fit-content;border-radius: 10%;display:none" className="m">
+
+            <div class="text-dark my-3 fs-1" style="padding-top: 4vh;"> HII , There </div>
+            <div class="text-dark my-5 fs-1"> I'm Aashay Jain </div>
+
+
+            <a href="#"><i class="fab fa-linkedin fs-1 mx-1"></i></a>
+            <a href="#"><i class="fab fa-linkedin fs-1 mx-1"></i></a>
+
+
+
+            <a href="#" style="color:black;"><i class="fab fa-github fs-1 mx-1"></i></a>
+            <a href="#" style="color: red;"><i class="fab fa-instagram fs-1 mb-3 "></i></a>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="about" style="background-color: hotpink;">
+        <div class=" " style="height:fit-content">
+            <div>
+                <h1 class="fw-bold  text-center"><i class="fas fa-grin text"
+                        style="margin-top:8vh;margin-bottom: 4vh;"></i>&nbsp About Me</h1>
+            </div>
+            <div class="justify-content-center " style="padding-left: 10%;padding-right: 10%;padding-bottom: 10%;">
+                <div class="row shadow-lg bg-light rounded text-center" style="height:80%;">
+                    <div class="col-sm-12 col-md-4 " style="padding-top: 3%;padding-bottom: 3%;">
+                        <img id="imgp" src="static/images/personal.jpg" alt="" style="width:100%;height:100%"
+                            class="bg-body-tertiary rounded">
+                    </div>
+                    <div class="col-sm-12 col-md-8 fs-3 bg-light rounded " id="anim"
+                        style="padding-top: 3%;padding-bottom: 3%;">
+                        <h2 class="fw-bold pb-3" style="">I'm Aashay</h2>
+                        <h4 class="fw-bold ml-3" style="">A passionate Programmer and developer</h4>
+                        <p class="fs-4" style="">I am a pre-final year student at an institute of National
+                            Importance, Maulana Azad National Institute of Tectnology,Bhopal.I am very passionate and
+                            curious about coding and developing new websites and new projects on new
+                            technologies.Working on
+                            myself continuously to improve my skills. </p>
+                        <div class="row fs-5 fw-bold" style="">
+                            <div class="col-md-6 col-sm-12 ">
+                                <span style="color:rgb(103, 16, 175)"> Age</span> : 21
+
+                            </div>
+                            <div class="col-md-6 col-sm-12 ">
+                                <span style="color:rgb(103, 16, 175)"> Email</span> : jainaashay123@gmail.com
+
+                            </div>
+
+                        </div>
+                        <div class="row fs-5 my-3" style="">
+                            <div class="col-md-6 col sm-12 fw-bold">
+                                <span style="color:rgb(103, 16, 175)"> Phone</span> : +91-9111508045
+
+                            </div>
+                            <div class="col-md-6 col-sm-12 fw-bold">
+                                <span style="color:rgb(103, 16, 175)"> Place</span> : Bhopal,MP,India
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div style="background-color: black;padding-bottom: 5%;">
+        <h1 class="text-center fw-bold py-5 text-light" style="font-size: xxx-large">
+            <i class="fas fa-code "></i> Skills
+        </h1>
+        <div class="container text-light shadow-lg rounded pt-5 " id="skills"
+            style="width:70%;background-color: coral;">
+
+
+
+
+
+
+
+
+            <div class="row text-center rounded text-dark " style="height:fit-content">
+                <div class="col-6 col-md-3 col-sm-6 rounded shadow-lg" style="aspect-ratio: 1;">
+
+                    <div class="card rounded shadow-lg text-center" style="margin-left: 5%;margin-right:5%;">
+                        <img src="static/images/C.png" class="card-img-top" alt="..." style="height:75%;">
+                        <div class="card-body p-1 fw-bold fs-5">
+                            <p class="card-text" style="margin-top:0px;"> C</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-6 col-md-3 col-sm-6  rounded shadow-lg" style="aspect-ratio: 1;">
+
+                    <div class="card" style="margin-left: 5%;margin-right:5%;">
+                        <img src="static/images/C++.png" class="card-img-top " alt="..." style="height:75%;">
+                        <div class="card-body p-1 fw-bold fs-5">
+                            <p class="card-text" style="margin-top:0px;"> C++</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-sm-6  rounded shadow-lg" style="aspect-ratio: 1;">
+
+                    <div class="card" style="margin-left: 5%;margin-right:5%;">
+                        <img src="static/images/Java.png" class="card-img-top" alt="..." style="height:75%;">
+                        <div class="card-body p-1 fw-bold fs-5">
+                            <p class="card-text" style="margin-top:0px;">Java</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3 col-sm-6  rounded shadow-lg" style="aspect-ratio: 1;">
+
+                    <div class="card" style="margin-left: 5%;margin-right:5%;">
+                        <img src="static/images/Python.png" class="card-img-top" alt="..." style="height:75%;">
+                        <div class="card-body p-1 fw-bold fs-5">
+                            <p class="card-text" style="margin-top:0px;">Python</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row text-center rounded" style="height:fit-content">
+                <div class="col-6 col-md-3 col-sm-6  rounded shadow-lg text-dark" style="aspect-ratio: 1;">
+
+                    <div class="card" style="margin-left: 5%;margin-right:5%;">
+                        <img src="static/images/html.png" class="card-img-top" alt="..." style="height:75%;">
+                        <div class="card-body p-1 fw-bold fs-5">
+                            <p class="card-text" style="margin-top:0px;"> HTML</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-sm-6  rounded shadow-lg text-dark" style="aspect-ratio: 1;">
+
+                    <div class="card" style="margin-left: 5%;margin-right:5%;">
+                        <img src="static/images/css.png" class="card-img-top" alt="..." style="height:75%;">
+                        <div class="card-body p-1 fw-bold fs-5">
+                            <p class="card-text" style="margin-top:0px;"> CSS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-sm-6  rounded shadow-lg text-dark" style="aspect-ratio: 1;">
+
+                    <div class="card" style="margin-left: 5%;margin-right:5%;">
+                        <img src="static/images/js.png" class="card-img-top" alt="..." style="height:75%;">
+                        <div class="card-body p-1 fw-bold fs-5">
+                            <p class="card-text" style="margin-top:0px;">Javascript</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3 col-sm-6  rounded shadow-lg text-dark" style="aspect-ratio: 1;">
+
+                    <div class="card" style="margin-left: 5%;margin-right:5%;">
+                        <img src="static/images/Mysql.png" class="card-img-top" alt="..." style="height:75%;">
+                        <div class="card-body p-1 fw-bold fs-5">
+                            <p class="card-text" style="margin-top:0px;">MySQL</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row text-center rounded" style="height:fit-content">
+                <div class="col-6 col-md-3 col-sm-6  rounded shadow-lg text-dark" style="aspect-ratio: 1;">
+
+                    <div class="card" style="margin-left: 5%;margin-right:5%;">
+                        <img src="static/images/php.png" class="card-img-top" alt="..." style="height:75%;">
+                        <div class="card-body p-1 fw-bold fs-5">
+                            <p class="card-text" style="margin-top:0px;"> PHP</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-sm-6  rounded shadow-lg text-dark" style="aspect-ratio: 1;">
+
+                    <div class="card" style="margin-left: 5%;margin-right:5%;">
+                        <img src="static/images/Bootstrap.png" class="card-img-top" alt="..." style="height:75%;">
+                        <div class="card-body p-1 fw-bold fs-5">
+                            <p class="card-text" style="margin-top:0px;"> Bootstrap</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-sm-6  rounded shadow-lg text-dark" style="aspect-ratio: 1;">
+
+                    <div class="card" style="margin-left: 5%;margin-right:5%;">
+                        <img src="static/images/flask.png" class="card-img-top" alt="..." style="height:75%;">
+                        <div class="card-body p-1 fw-bold fs-5">
+                            <p class="card-text" style="margin-top:0px;">Flask</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3 col-sm-6 rounded shadow-lg text-dark" style="aspect-ratio: 1;">
+
+                    <div class="card" style="margin-left: 5%;margin-right:5%;">
+                        <img src="static/images/react.png" class="card-img-top" alt="..." style="height:75%;">
+                        <div class="card-body p-1 fw-bold fs-5">
+                            <p class="card-text" style="margin-top:0px;">ReactJS</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="" id="education" style="background-color: aquamarine;">
+        <div class="container py-4">
+            <h1 class="text-center fw-bold text-dark my-3"> <i class="fas fa-graduation-cap"></i>Education</h1>
+            <p class="text-center fs-3">Education is not about learning facts,but The training of mind to think.</p>
+            <div class="row shadow-lg rounded my-4 bg-light" style="margin-left:5%;margin-right: 5%;">
+                <div class="col-12 col-sm-4 col-md-4 my-2">
+                    <img src="static/images/manit.jfif" alt="" style="width:100%;height:20vh;">
+                </div>
+                <div class="col-12 col-sm-8 col-md-8">
+                    <h1 class="fs-3 fw-bold " style="color:blue;padding-left: 8%;"> Maulana Azad National Instute of
+                        Technology</h1>
+                    <p class="fs-2" style="padding-left: 8%;color:coral">2020-2024 <span class="">|</span> <span
+                            class="fw-bold fs-3 " style="color:forestgreen">Persuing</span></p>
+                </div>
+
+
+            </div>
+            <div class="row shadow-lg rounded my-4 bg-light" style="margin-left:5%;margin-right: 5%;">
+                <div class="col-12 col-sm-4 col-md-4 my-2">
+                    <img src="static/images/school.jfif" alt="" style="width:100%;height:20vh;">
+                </div>
+                <div class="col-12 col-sm-8 col-md-8">
+                    <h1 class="fs-3 fw-bold " style="color:blue;padding-left: 8%;"> St. Mary's Sr. Sec. School,Bhopal
+                    </h1>
+                    <p class="fs-2" style="padding-left: 8%;color:coral">2007-2020 <span class="">|</span> <span
+                            class="fw-bold fs-3" style="color:red">Qualified</span></p>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="bg-dark" id="projects">
+        <div class="container ">
+            <h1 class="fw-bold fs-1 text-center text-light "><i class="fas fa-desktop" style="margin-top:6vh;">&nbsp
+                    Projects</i></h1>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6 shadow-lg mt-5 mb-5 text-center">
+                    <div class="card " style="width: 90%;border-radius:5%;margin-left: 5%;margin-right: 5%;">
+                        <img src="static/images/login.png" class="card-img-top" alt="..."
+                            style="border-top-left-radius:10%;border-top-right-radius:10%">
+                        <div class="card-body" style="border-radius: 5%;">
+                            <h3 class="card-title text-center fw-bold">Login Authentication and Registration</h3>
+                            <p class="card-text text-center fs-5">Created and hosted a responsive webpage where the user
+                                has to login into the website to view some secure content and can also create a new account
+                                with verification with email.
+                            </p>
+                        </div>
+
+                        <div class="card-body" style="border-radius: 5%;">
+                            <a href="#" class="btn btn-primary fs-6 " style="float:left" target="_blank">Project
+                                Code</a>
+                            <a href="/login" class="btn btn-primary fs-6" style="float: right;" target="_blank">Live
+                                Project</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 shadow-lg mt-5 mb-5 text-center">
+                    <div class="card " style="width: 90%;border-radius:5%;margin-left: 5%;margin-right: 5%;">
+                        <img src="static/images/DB.png" class="card-img-top" alt="..."
+                            style="border-top-left-radius:10%;border-top-right-radius:10%">
+                        <div class="card-body" style="border-radius: 5%;">
+                            <h3 class="card-title text-center fw-bold">Student database Manager</h3>
+                            <p class="card-text text-center fs-5">Created a fully responsive webpage and hosted here,
+                                where the user has to first login on the website using correct credentials and then add information about the student
+                                into
+                                the database.</p>
+                        </div>
+
+                        <div class="card-body" style="border-radius: 5%;">
+                            <a href="https://github.com/jainAashay/Student-Information-Management-System"
+                                class="btn btn-primary fs-6 " style="float:left" target="_blank">Project Code</a>
+                            <a href="/information" class="btn btn-primary fs-6" style="float: right;"
+                                target="_blank">Live Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center py-4">
+                <a class="btn btn-primary btn-lg " style="background-color: magenta;" data-toggle="collapse"
+                    href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"
+                    onclick="disappear()" id="y">
+                    <i class="fas fa-eye "> View more Projects</i>
+                </a>
+
+            </div>
+            <div class="collapse" id="collapseExample">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 shadow-lg mt-5 text-center">
+                        <div class="card " style="width: 90%;border-radius:5%;margin-left: 5%;margin-right: 5%;">
+                            <img src="static/images/otp.png" class="card-img-top" alt="..."
+                                style="border-top-left-radius:10%;border-top-right-radius:10%">
+                            <div class="card-body">
+                                <h3 class="card-title text-center fw-bold">OTP Verification</h3>
+                                <p class="card-text text-center fs-5">Created a GUI based OTP Verification program to
+                                    send and verify OTP via Email with a validity of 30 seconds.</p>
+                            </div>
+
+                            <div class="card-body" style="border-radius: 5%;">
+                                <a href="https://github.com/jainAashay/OTP-Verification" class="btn btn-primary fs-6 "
+                                    style="float:left" target="_blank">Project Code</a>
+                                <a href="/login" class="btn btn-primary fs-6" style="float: right;" target="_blank">Live
+                                    Project</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 shadow-lg mt-5 text-center pb-4">
+                        <div class="card " style="width: 90%;border-radius:5%;margin-left: 5%;margin-right: 5%;">
+                            <img src="static/images/image.png" class="card-img-top" alt="..."
+                                style="border-top-left-radius:10%;border-top-right-radius:10%;">
+                            <div class="card-body">
+                                <h3 class="card-title text-center fw-bold">Random Quote Generator</h3>
+                                <p class="card-text text-center fs-5">Created a responsive website which generates
+                                    random famous quotes according to the category wise choice of the user using API,
+                                    HTML,CSS and Javascript.
+                                </p>
+                            </div>
+
+                            <div class="card-body" style="border-radius: 5%;">
+                                <a href="https://github.com/jainAashay/Quotes-Generator" class="btn btn-primary fs-6 "
+                                    style="float:left" target="_blank">Project Code</a>
+                                <a href="https://relaxed-travesseiro-a10b91.netlify.app/" class="btn btn-primary fs-6"
+                                    style="float: right;" target="_blank">Live Project</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <h1 class="text-center fs-1 " style="margin:2%;margin-top:8vh;"><i class="fas fa-comment fs-1">Get in <span
+                style="color:red">Touch</span></i></h1>
+    <div class="shadow-lg rounded" style="margin-left:10%;margin-right: 10%;" id="contact">
+        <div class="row" style="margin-left:5%;margin-right: 5%;">
+            <div class="col-sm-6 text-center">
+                <img src="static/images/contact.png" alt=""
+                    style="max-height:400px;width: 85%; height: 85%;margin-top: 10%;margin-left: 10%; float: right;"
+                    id="iimg">
+            </div>
+            <div class="col-sm-6 contact-form-wrapper d-flex justify-content-center">
+                <form action="/" class="contact-form" method="POST">
+                    <h5 class="title fs-1 fw-bold">Contact us</h5>
+                    <p class="description">Feel free to contact us if you need any assistance, any help or another
+                        question.
+                    </p>
+                    <div>
+                        <input type="text" class="form-control form-control-lg rounded border-white mb-4 form-input"
+                            id="name" placeholder="Name" name="name" required>
+                    </div>
+                    <div>
+                        <input type="email" class="form-control rounded border-white mb-4 form-input"
+                            placeholder="Email" name="email" required>
+                    </div>
+                    <div>
+                        <textarea id="message" class="form-control rounded border-white mb-4 form-text-area" rows="5"
+                            cols="30" placeholder="Message" name="msg" required></textarea>
+                    </div>
+                    <div class="submit-button-wrapper">
+                        <input type="submit" value="Send" onclick="Thanks()">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <div>
+        <!-- Footer -->
+        <footer class="text-center text-white" style="background-color: blueviolet;width:100%;">
+            <!-- Grid container -->
+            <div class="container">
+                <!-- Section: Links -->
+                <section class="mt-5">
+                    <!-- Grid row-->
+                    <div class="row text-center d-flex justify-content-center pt-5">
+                        <!-- Grid column -->
+                        <div class="col-md-2 my-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="#about" class="text-white">About us</a>
+                            </h6>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 my-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="#skills" class="text-white">Skills</a>
+                            </h6>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 my-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="#education" class="text-white">Education</a>
+                            </h6>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 my-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="#projects" class="text-white">Projects</a>
+                            </h6>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 my-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="#contact" class="text-white">Contact</a>
+                            </h6>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row-->
+                </section>
+                <!-- Section: Links -->
+
+                <hr class="my-5" />
+
+                <!-- Section: Text -->
+                <section class="mb-5">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-8 fs-5">
+                            <p>
+                                I am a pre-final year student at an institute of National Importance, Maulana Azad
+                                National Institute of Tectnology,Bhopal.I am very passionate and curious about coding
+                                and developing new websites and new projects on new technologies.Working on myself
+                                continuously to improve my skills.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <!-- Section: Text -->
+
+                <!-- Section: Social -->
+                <section class="text-center mb-5">
+
+
+                    <a href="https://instagram.com/aashay_jain20?igshid=ZDdkNTZiNTM=" class="text-white me-4 fs-2"
+                        target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/aashay-jain-132b0b227" class="text-white me-4 fs-2"
+                        target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/jainAashay/" class="text-white me-4 fs-2" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </section>
+                <!-- Section: Social -->
+            </div>
+            <!-- Grid container -->
+
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+    </div>
+
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script>
+        var j = 0, txt1 = "Hii, There", txt2 = "I'm Aashay Jain", i = 0;
+        async function f1() {
+
+            if (j < txt1.length) {
+
+                document.getElementById("mg1").innerHTML += txt1.charAt(j);
+                j++;
+                setTimeout(f1, 100);
+            }
+        }
+        async function f2() {
+
+            if (i < txt2.length) {
+                document.getElementById("mg2").innerHTML += txt2.charAt(i);
+                i++;
+                setTimeout(f2, 100);
+            }
+        }
+        function myfunc1() {
+
+            if (document.getElementById('l').innerHTML == "Sign Out") {
+
+                document.getElementById("l").href = "/logout";
+            }
+            else {
+                document.getElementById("l").href = "/login";
+            }
+
+
+
+            let txt = 'Hii There';
+            console.log(txt);
+            var speed = 25;
+            var i = 0;
+            f1();
+            setTimeout(f2, 1100);
+
+
+        }
+        function disappear() {
+            document.getElementById('y').style.display = 'none';
+        }
+        function Thanks()
+        {
+            alert("Thanks !! I will reach You soon")
+        }
+    </script>
+
+
+
+
+
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/6415e93c4247f20fefe6ace0/1grqpe5hq';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
