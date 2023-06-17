@@ -27,7 +27,9 @@
         }
     </style>
 </head>
+
 <body style="background-color: pink;">
+
     <div class="container text-center my-2">
      <h1 class="text-center py-5">Student Information</h1>
      
@@ -37,6 +39,7 @@
           <thead style="background-color: aquamarine;">
             <tr>
               
+                <th style="border-radius: 5%;border: inset;padding: 5px;vertical-align: middle;">Select</th>
               <th style="border-radius: 5%;border: inset;padding: 5px;vertical-align: middle;">Scholar No.</th>
               <th style="border-radius: 5%;border: inset;padding: 5px;vertical-align: middle;">DOB</th>
               <th style="border-radius: 5%;border: inset;padding: 5px;vertical-align: middle;">Student Name</th>
@@ -52,7 +55,7 @@
           
             <tr>
               
-              
+                <td><input type="checkbox" name="id" value={{account.SNo}}/><label for="id"></label></td>
               
               <td>{{account.Scholar_No}}</td>
               <td>{{account.DOB}}</td>
@@ -70,15 +73,13 @@
     
       </div>
 
-      <div class="row ">
+      <div class="row">
+        
         <div class="col my-4 text-center">
-          <a class="btn btn-primary text-center" href="{{url_for('information')}}">Add</a>
-        </div>
-        <div class="col col-xs-12 my-4 text-center">
-          <a class="btn btn-success text-center" href="{{url_for('update')}}">Update</a>
+          <a class="btn btn-primary text-center " href="{{url_for('delete')}}">Return</a>
         </div>
         <div class="col my-4 text-center">
-          <a class="btn btn-danger text-center" href="{{url_for('delete')}}">Delete</a>
+          <button class="btn btn-danger text-center text-light" type="submit">Delete</button>
         </div>
       </div>
       </form> 
