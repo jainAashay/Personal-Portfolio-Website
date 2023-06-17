@@ -6,19 +6,18 @@ import MySQLdb.cursors
 import random
 import smtplib
 from datetime import datetime
-app = Flask(__name__,static_url_path='/static')
+app = Flask(__name__)
 
 Dict={}
 app.secret_key = '12345678'
-db = MySQLdb.connect("localhost","root","","login_data" )
+db = MySQLdb.connect("aashay26.mysql.pythonanywhere-services.com","aashay26","Aashay123#2002","aashay26$login_data" )
 mycursor = db.cursor()
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'login_data'
+app.config['MYSQL_HOST'] = 'aashay26.mysql.pythonanywhere-services.com'
+app.config['MYSQL_USER'] = 'aashay26'
+app.config['MYSQL_PASSWORD'] = 'Aashay123#2002'
+app.config['MYSQL_DB'] = 'aashay26$login_data'
 app.config["SESSION_PERMANENT"] = False
 mysql = MySQL(app)
-
 
 
 @app.route('/',methods=["GET","POST"])
@@ -31,23 +30,16 @@ def home():
 		s.starttls()
 		ssender = "aashay1000@gmail.com"
 		spass = "frwe dkwc sbgr jpgz"
-		s.login(ssender, spass)	
+		s.login(ssender, spass)
 		s.sendmail(ssender, "jainaashay123@gmail.com", msg+"     email="+email)
-		
-        
+
+
 
 	if session.get('loggedin')==True:
-		
+
 		return render_template('index.html',data="Sign Out")
 	else:
 		return render_template('index.html',data="Login/SignUp")
-
-	
-
-
-
-
-
 
 
 @app.route('/login', methods =['GET', 'POST'])
@@ -63,7 +55,7 @@ def login():
 			session['loggedin'] = True
 			session['username'] = account['email']
 			msg = 'Logged in successfully !'
-			
+
 			return redirect(url_for('home'))
 		else:
 			flash('Invalid Credentials !!')
@@ -73,9 +65,9 @@ def login():
 
 @app.route('/logout')
 def logout():
-	
+
 	session.pop('loggedin', None)
-	
+
 	session.pop('username', None)
 	return redirect(url_for('home'))
 
@@ -103,23 +95,23 @@ def New():
 			return redirect(url_for('Enter',email=emaill))
 		else:
 			flash("Account already Exists !!")
-	
+
 	return render_template('New.html')
-     
-	      
- 
+
+
+
 @app.route('/Enter/<email>',methods=["POST","GET"])
 def Enter(email):
 	if request.method=="POST":
 		otp=request.form['otp']
-		
-		
+
+
 		if Dict[email]==otp:
 			return redirect(url_for('setpassword',email=email))
 		else:
 			flash('incorrect OTP!! Try Again !!')
-		
-		
+
+
 	return render_template('Enter.html')
 
 
@@ -132,7 +124,7 @@ def setpassword(email):
 		mycursor.execute('INSERT INTO `login` (`email`, `password`) VALUES ( %s, %s)', (email,password,))
 		db.commit()
 		flash('Registration Successful')
-		
+
 	return render_template('password.html')
 
 
@@ -143,11 +135,14 @@ def information():
 			schno=request.form['scno']
 			dob=str(request.form['dob'])
 			sname=request.form['Student_Name']
+
 			branch=request.form['branch']
+
 			yog=request.form['YOG']
+			mycursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 			x=mycursor.execute('INSERT INTO `student` ( `Scholar_No`, `DOB`, `Student_Name`, `Branch`, `YOG`) VALUES (%s,%s,%s, %s, %s)',(schno,dob,sname,branch,yog,))
 			if x:
-				db.commit()
+				mysql.connection.commit()
 				flash("Successful")
 				return render_template('information.html')
 			else:
@@ -157,57 +152,146 @@ def information():
 
 	else:
 		return render_template('login.html')
-	
 
-@app.route('/records')
-def show():
+
+@app.route('/records',methods=['GET','POST'])
+def records():
+
 	if session.get('loggedin')==True:
-		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-		cursor.execute('SELECT * FROM student')
-		records=cursor.fetchall()
-		return render_template('records.html',records=records)
+	    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+	    cursor.execute('SELECT * FROM student')
+	    records=cursor.fetchall()
+	    return render_template('records.html',records=records)
+
 	else:
-		return "Access Denied !! Please Login first"
 
-
-	
-
-	    
-			
-	    
-	    
-	    
-	    
-
-		
-
-
-		
-
-			
+	    return redirect('/login')
 
 
 
+@app.route("/update",methods=['GET','POST'])
+def update():
+    if session.get('loggedin')!=True:
+        return redirect('/login')
+
+    else:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        if request.method=='POST':
+            dict={}
+            i=0
+            for x in request.form.getlist('sno[]'):
+                dict[x]=i
+                i=i+1
+
+            schno=request.form.getlist('scholarno[]')
+            dob=request.form.getlist('dob[]')
+            sname=request.form.getlist('studentname[]')
+            branch=request.form.getlist('branch[]')
+            yog=request.form.getlist('yog[]')
+            for x in request.form.getlist('sno[]'):
+
+                i=dict[x]
+                f=cursor.execute('UPDATE student SET Scholar_No=%s,DOB=%s,Student_Name=%s,Branch=%s,YOG=%s where sno=%s',(schno[i],dob[i],sname[i],branch[i],yog[i],x,))
+                if f:
+                    mysql.connection.commit()
+
+            return redirect("/update")
+
+        cursor.execute('SELECT * FROM student')
+        records=cursor.fetchall()
+        return render_template("update.html",records=records)
+
+
+
+
+@app.route('/delete',methods=['GET','POST'])
+def delete():
+    if session.get('loggedin')!=True:
+        return redirect('/login')
+
+    else:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        if request.method=='POST':
+            for x in request.form.getlist('id'):
+                x=x.replace('/','')
+                p=cursor.execute('DELETE FROM student WHERE sno = %s',(x,))
+                mysql.connection.commit()
+                if p:
+                    db.commit()
+
+            return redirect('/records')
+
+        cursor.execute('SELECT * FROM student')
+        records=cursor.fetchall()
+        return render_template('delete.html',records=records)
 
 
 
 
 
-        
-			
-	
 
 
 
 
-			
-			
-			
-	
-	
-		
 
 
-app.run()
 
-#INSERT INTO `login` (`sno`, `email`, `password`) VALUES (NULL, 'ahdhshj', 'sds')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
