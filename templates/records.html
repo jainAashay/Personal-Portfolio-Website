@@ -5,69 +5,149 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="nofollow" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin=”anonymous”>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
     <style>
         td{
             border-radius: 5%;
-            border: inset; 
+            border: inset;
             padding: 5px;
             vertical-align: middle;
-            
+            background-color: antiquewhite;
+
         }
         th{
-            
+
             border-radius: 5%;
             border: inset;
             padding: 5px;
             vertical-align: middle;
+            background-color: aquamarine;
         }
+
+
+        .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
     </style>
 </head>
 <body style="background-color: pink;">
     <div class="container text-center my-2">
-     <h1 class="text-center py-5">Student Information</h1>
-     
-      <form action="/records" method="POST"> 
-        <div class="table-responsive">        
+     <h1 class="text-center py-4">Student Information</h1>
+
+      <form action="/records" method="POST">
+        <div id="mySidenav" class="sidenav">
+          <h2 style="color:orange;" class="py-3 fw-bold">Add Filters</h2>
+          <span><a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="font-size: xxx-large;color: red;" >&times;</a></span>
+          <div class="input-group my-4 mx-auto"  style="width:80%;text-align: center;">
+            <span class="input-group-text me-1" style="background-color: aqua;">Name</span>
+            <input type="text" class="form-control" id="sname" name="sname">
+          </div>
+
+          <div class="input-group my-4 mx-auto"  style="width:80%;text-align: center;">
+            <span class="input-group-text me-1" style="background-color: aqua;">Scholar No</span>
+            <input type="text" class="form-control" id="scno" name="scno">
+          </div>
+
+          <div class="input-group my-4 mx-auto" style="width:80%;">
+            <label class="input-group-text" for="inputGroupSelect01" style="background-color: aqua;">Branch Name</label>
+            <select class="form-select ms-1" id="branch" name="branch" >
+              <option selected value="">Choose...</option>
+              <option value="Computer Science & Engineering">CSE</option>
+              <option value="Electrical Engineering">EE</option>
+              <option value="Electronics and Communication Engineering">ECE</option>
+              <option value="Mechanical Engineering">ME</option>
+            </select>
+          </div>
+
+          <div class="input-group my-4 mx-auto"  style="width:80%;text-align: center;">
+            <span class="input-group-text me-1" style="background-color: aqua;">Year of Graduation</span>
+            <input type="text" class="form-control" id="yog" name="yog">
+          </div>
+
+          <div class="text-center mx-auto" style="width:80%;">
+             <button type="reset" class="btn btn-danger float-start" >Reset</button>
+             <button type=submit class="btn btn-success float-end" >Apply</button>
+          </div>
+        </div>
+      </form>
+
+        <div class="table-responsive">
+          <div style="font-size:30px;cursor:pointer;float:right" onclick="openNav()"><i class="fa fa-filter" style="font-size:36px;color:red"></i> </div>
         <table class="table ">
           <thead style="background-color: aquamarine;">
             <tr>
-              
-              <th style="border-radius: 5%;border: inset;padding: 5px;vertical-align: middle;">Scholar No.</th>
-              <th style="border-radius: 5%;border: inset;padding: 5px;vertical-align: middle;">DOB</th>
-              <th style="border-radius: 5%;border: inset;padding: 5px;vertical-align: middle;">Student Name</th>
-              <th style="border-radius: 5%;border: inset;padding: 5px;vertical-align: middle;">Branch</th>
-              <th style="border-radius: 5%;border: inset;padding: 5px;vertical-align: middle;">Year of Graduation</th>
+
+              <th style="border-radius: 5%;border: inset;padding: 5px;vertical-align: middle;background-color: aquamarine;">Scholar No.</th>
+              <th style="border-radius: 5%;border: inset;padding: 5px;vertical-align: middle;background-color: aquamarine;">DOB</th>
+              <th style="border-radius: 5%;border: inset;padding: 5px;vertical-align: middle;background-color: aquamarine;">Student Name</th>
+              <th style="border-radius: 5%;border: inset;padding: 5px;vertical-align: middle;background-color: aquamarine;">Branch</th>
+              <th style="border-radius: 5%;border: inset;padding: 5px;vertical-align: middle;background-color: aquamarine;">Year of Graduation</th>
             </tr>
           </thead>
-          <tbody style="background-color: bisque;">
-            
+          <tbody >
+
+
+
+
             {% for account in records %}
-          
-            
-          
             <tr>
-              
-              
-              
-              <td>{{account.Scholar_No}}</td>
-              <td>{{account.DOB}}</td>
-              <td>{{account.Student_Name}}</td>
-              <td>{{account.Branch}}</td>
-              <td>{{account.YOG}}</td>
+
+
+
+              <td style="background-color: bisque;">{{account.Scholar_No}}</td>
+              <td style="background-color: bisque;">{{account.DOB}}</td>
+              <td style="background-color: bisque;">{{account.Student_Name}}</td>
+              <td style="background-color: bisque;">{{account.Branch}}</td>
+              <td style="background-color: bisque;">{{account.YOG}}</td>
             </tr>
-         
+
+
             {% endfor %}
-            
           </tbody>
         </table>
-        
-        
-    
+
+
+
       </div>
 
       <div class="row ">
@@ -81,16 +161,24 @@
           <a class="btn btn-danger text-center" href="{{url_for('delete')}}">Delete</a>
         </div>
       </div>
-      </form> 
-      
-     
-        
+
+
+
       </div>
-      
+
 
 </tr>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "340px";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+
+      </script>
+
 </body>
 </html>
