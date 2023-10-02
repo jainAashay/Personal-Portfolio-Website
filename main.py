@@ -1,5 +1,5 @@
 # Store this code in 'app.py' file
-
+import pandas as pd
 from flask import *
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
@@ -40,6 +40,13 @@ def home():
 		return render_template('index.html',data="Sign Out")
 	else:
 		return render_template('index.html',data="Login/SignUp")
+
+
+
+
+
+
+
 
 
 @app.route('/login', methods =['GET', 'POST'])
@@ -137,16 +144,34 @@ def information():
 			sname=request.form['Student_Name']
 
 			branch=request.form['branch']
-
 			yog=request.form['YOG']
-			mycursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-			x=mycursor.execute('INSERT INTO `student` ( `Scholar_No`, `DOB`, `Student_Name`, `Branch`, `YOG`) VALUES (%s,%s,%s, %s, %s)',(schno,dob,sname,branch,yog,))
-			if x:
-				mysql.connection.commit()
-				flash("Successful")
-				return render_template('information.html')
-			else:
-				flash('invalid entry !!')
+
+
+			try:
+			    mycursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+			    x=mycursor.execute('INSERT INTO `student` ( `Scholar_No`, `DOB`, `Student_Name`, `Branch`, `YOG`) VALUES (%s,%s,%s, %s, %s)',(schno,dob,sname,branch,yog,))
+			    mysql.connection.commit()
+			    flash("Successful")
+
+
+			except (MySQLdb.Error) as e:
+			    flash("Invalid Entry !!!")
+
+
+
+
+			return render_template('information.html')
+
+
+
+
+
+
+
+
+
+
+
 		else:
 			return render_template('information.html')
 
@@ -158,14 +183,55 @@ def information():
 def records():
 
 	if session.get('loggedin')==True:
+
 	    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 	    cursor.execute('SELECT * FROM student')
 	    records=cursor.fetchall()
+	    if request.method == 'POST':
+	        sname = request.form['sname']
+	        scno=request.form['scno']
+	        branch=request.form['branch']
+	        yog=request.form['yog']
+
+	        if not scno=="":
+	            cursor.execute('SELECT * FROM student where Scholar_No=%s',(scno,))
+	            y=cursor.fetchall()
+	            records=[x for x in records if x in y]
+
+	        if not sname=="":
+	            cursor.execute('SELECT * FROM student where Student_Name=%s',(sname,))
+	            y=cursor.fetchall()
+	            records=[x for x in records if x in y]
+
+	        if not branch=="":
+	            cursor.execute('SELECT * FROM student where Branch=%s',(branch,))
+	            y=cursor.fetchall()
+	            records=[x for x in records if x in y]
+
+	        if not yog=="":
+	            cursor.execute('SELECT * FROM student where yog=%s',(yog,))
+	            y=cursor.fetchall()
+	            records=[x for x in records if x in y]
+
+
 	    return render_template('records.html',records=records)
 
 	else:
 
 	    return redirect('/login')
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -191,15 +257,31 @@ def update():
             for x in request.form.getlist('sno[]'):
 
                 i=dict[x]
-                f=cursor.execute('UPDATE student SET Scholar_No=%s,DOB=%s,Student_Name=%s,Branch=%s,YOG=%s where sno=%s',(schno[i],dob[i],sname[i],branch[i],yog[i],x,))
-                if f:
-                    mysql.connection.commit()
+                try:
+                    f=cursor.execute('UPDATE student SET Scholar_No=%s,DOB=%s,Student_Name=%s,Branch=%s,YOG=%s where sno=%s',(schno[i],dob[i],sname[i],branch[i],yog[i],x,))
+                    if f:
+                        mysql.connection.commit()
+
+                except (MySQLdb.Error) as e:
+                    flash("An error occured !!")
+
+
+
 
             return redirect("/update")
 
         cursor.execute('SELECT * FROM student')
         records=cursor.fetchall()
         return render_template("update.html",records=records)
+
+
+
+
+
+
+
+
+
 
 
 
@@ -215,9 +297,10 @@ def delete():
             for x in request.form.getlist('id'):
                 x=x.replace('/','')
                 p=cursor.execute('DELETE FROM student WHERE sno = %s',(x,))
-                mysql.connection.commit()
+
                 if p:
-                    db.commit()
+                    mysql.connection.commit()
+
 
             return redirect('/records')
 
@@ -227,71 +310,60 @@ def delete():
 
 
 
+@app.route('/information/uploadData', methods=['GET', 'POST'])
+def upload_file():
+    if session.get('loggedin')!=True:
+        return redirect('/login')
 
+    df=pd.DataFrame()
+    if request.method == 'POST':
+        f = request.files['file']
+        df=pd.read_csv(f)
 
+        df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
+        df=df.replace('\\n',' ')
+        if df.columns.isin(['DOB']).any():
+            df['DOB']=pd.to_datetime(df['DOB'])
+            df['DOB']=df['DOB'].dt.strftime('%Y-%m-%d')
 
 
+        if request.form['action']=='View Data':
 
+            return render_template('file.html',df=df)
 
 
+        elif request.form['action']=='Add Data':
 
+            if df.columns.isin(['Scholar No']).any() and df.columns.isin(['DOB']).any() and df.columns.isin(['Student Name']).any() and df.columns.isin(['YOG']).any() and df.columns.isin(['Branch']).any():
+                if not df.isnull().values.any():
+                    flag=True
+                    for index in df.index:
+                        schno=df['Scholar No'][index]
+                        dob=df['DOB'][index]
+                        sname=df['Student Name'][index]
+                        yog=df['YOG'][index]
+                        branch=df['Branch'][index]
+                        try:
+                            cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+                            cursor.execute('INSERT INTO `student` ( `Scholar_No`, `DOB`, `Student_Name`, `Branch`, `YOG`) VALUES (%s,%s,%s, %s, %s)',(schno,dob,sname,branch,yog,))
+                            mysql.connection.commit()
 
 
+                        except (MySQLdb.Error) as e:
 
+                            flag=False
 
+                    if flag:
+                        mysql.connection.commit()
 
 
+            else:
+                flash("Invalid data")
+                df1=pd.DataFrame()
+                df=df1
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return render_template('file.html',df=df)
 
