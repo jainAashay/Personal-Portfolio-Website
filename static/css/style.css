@@ -35,7 +35,12 @@ body{
     left: 32px;
     bottom: -24px;
   }
+@media screen and (max-width:768px) {
 
+    .mid{
+      text-align: center!important;
+    }
+  }
   @media screen and (max-width:570px) {
 
     .x{
