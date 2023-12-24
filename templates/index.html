@@ -22,7 +22,7 @@
 
 <body onload="myfunc1()">
 
-
+<a style="position: fixed;bottom:1%;left:3%;font-size: 48px;color: black;" href="#" ><b><i class="fa fa-angle-up"></i></b></a>
     <nav class="navbar navbar-expand-md navbar-dark bg-warning fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand fw-bold fs-3 mx-4 text-black " href="#">Aashay Jain</a>
@@ -34,27 +34,28 @@
 
             <div class="navbar-collapse collapse" id="collapseNavbar">
                 <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item active ">
+                        <a class="nav-link fw-bold fs-4 mx-1 text-black text-center" href="#about">About</a>
+                    </li>
                     <li class="nav-item active  ">
-                        <a class="nav-link fw-bold fs-4 mx-2 text-black text-center" href="#">Home</a>
+                        <a class="nav-link fw-bold fs-4 mx-1 text-black text-center" href="#Achievement">Achievements</a>
                     </li>
                     <li class="nav-item  ">
-                        <a class="nav-link fw-bold fs-4 mx-2 text-black text-center" href="#about">About</a>
-                    </li>
-                    <li class="nav-item  ">
-                        <a class="nav-link fw-bold fs-4 mx-2 text-black text-center" href="#skills">Skills</a>
+                        <a class="nav-link fw-bold fs-4 mx-1 text-black text-center" href="#skills">Skills</a>
                     </li>
                     <li class="nav-item active  ">
-                        <a class="nav-link fw-bold fs-4 mx-2 text-black text-center" href="#education">Education</a>
+                        <a class="nav-link fw-bold fs-4 mx-1 text-black text-center" href="#education">Education</a>
                     </li>
                     <li class="nav-item active  ">
-                        <a class="nav-link fw-bold fs-4 mx-2 text-black text-center" href="#projects">Projects</a>
+                        <a class="nav-link fw-bold fs-4 mx-1 text-black text-center" href="#projects">Projects</a>
                     </li>
                     <li class="nav-item active  ">
-                        <a class="nav-link fw-bold fs-4 mx-2 text-black text-center " href="#contact">Contact</a>
+                        <a class="nav-link fw-bold fs-4 mx-1 text-black text-center " href="#contact">Contact</a>
                     </li>
                     <li class="nav-item active  ">
                         <div style="padding-top: 2%;"> <a
-                                class="nav-link fw-bold fs-5 mx-2 text-light text-center rounded" href="/login"
+                                class="nav-link fw-bold fs-5 mx-1 text-light text-center rounded" href="/login"
                                 style="border-radius:10% ;background-color: blue;" id="l">{{data}}</a></div>
                     </li>
                 </ul>
@@ -112,12 +113,12 @@
 
 
     <div id="about" style="background-color: hotpink;">
-        <div class=" " style="height:fit-content">
+
             <div>
                 <h1 class="fw-bold  text-center"><i class="fas fa-grin text"
                         style="margin-top:8vh;margin-bottom: 4vh;"></i>&nbsp About Me</h1>
             </div>
-            <div class="justify-content-center " style="padding-left: 10%;padding-right: 10%;padding-bottom: 10%;">
+            <div class="justify-content-center pb-5" id="about1" style="padding-left: 10%;padding-right: 10%;">
                 <div class="row shadow-lg bg-light rounded text-center" style="height:80%;">
                     <div class="col-sm-12 col-md-4 " style="padding-top: 3%;padding-bottom: 3%;">
                         <img id="imgp" src="static/images/personal.jpg" alt="" style="width:100%;height:100%"
@@ -161,7 +162,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+
     </div>
 
 
@@ -169,7 +170,7 @@
     <div style="background-color: cornflowerblue;">
 
 
-        <div class="container py-5" style="width:80%">
+        <div class="container pt-3 pb-5" style="width:80%">
 
             <h2 class="text-center text-dark fw-bold py-4 fs-1">
                 <i class='fas fa-pen-alt' class="fs-1"></i> Work Experience
@@ -219,6 +220,164 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+<div class="pb-5" style="background-color: orchid;" id="Achievement">
+        <div class="text-center fs-1 py-4 fw-bold" style="color:black">
+            <i class="fa fa-trophy"></i>&nbsp;Achievements
+        </div>
+        <div class="container achievements">
+
+
+
+            <div class="row bg-warning my-3 shadow rounded A1">
+                <div class="col-sm-12 col-md-4 d-flex align-items-center text-center">
+                    <img src="static/images/cc1.jpg" alt="" class="rounded my-1"
+                        style="height: 20vh;width:100%;max-height: 35vh;">
+
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    <div class="fs-4 pt-2 ps-1"><b>4 <i class="fa fa-star checked " style="color:blueviolet"></i>
+                            Rating at Codechef</b></div>
+                    <div class="py-2 ps-1 fs-6">
+                        <i class="fa fa-thumbs-up fs-6" style='color:red'></i> &nbsp;Achieved Max
+                        Rating of
+                        <b><i>1892</i></b> at Codechef
+                    </div>
+                    <div class="py-2 ps-1">
+                        <a href="https://www.codechef.com/users/aj_1000" target="_blank" class="btn btn-sm btn-primary">View
+                            Profile
+                            &nbsp;<i class="fa fa-user-circle"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="row bg-warning my-3 shadow rounded A1" >
+                <div class="col-sm-12 col-md-4 d-flex align-items-center text-center">
+                    <img src="static/images/leetcode.png" class="rounded my-1" alt=""
+                        style="height:20vh;width:100%;max-height: 35vh;">
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    <div class="fs-4 pt-2 ps-1"> <b style="color:coral">Knight </b><b>at Leetcode</b></div>
+                    <div class="py-2 ps-1 fs-6">
+                        <i class="fa fa-thumbs-up" style='color:red'></i>&nbsp; Achieved Max
+                        Rating of
+                        <b><i>2061</i></b> at Leetcode
+                    </div>
+                    <div class="py-2 ps-1">
+                        <a href="https://leetcode.com/jainaashay123/" target="_blank" class="btn btn-sm btn-primary">View Profile
+                            &nbsp;<i class="fa fa-user-circle"></i></a>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="row bg-warning my-3 shadow rounded A1">
+                <div class="col-sm-12 col-md-4 d-flex align-items-center text-center">
+                    <img src="static/images/codeforces.jpg" class="rounded my-1" alt=""
+                        style="height: 20vh;width:100%;max-height: 35vh;">
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    <div class="fs-4 pt-2 ps-1"> <b style="color: mediumslateblue;">Specialist</b><b> at
+                            Codeforces</b></div>
+                    <div class="py-2 ps-1 fs-6">
+                        <i class="fa fa-thumbs-up" style='color:red'></i> &nbsp;Achieved Max
+                        Rating of
+                        <b><i>1430</i></b> at Codeforces
+                    </div>
+                    <div class="py-2 ps-1">
+                        <a href="https://codeforces.com/profile/jainaashay123" target="_blank" class="btn btn-sm btn-primary">View
+                            Profile
+                            &nbsp;<i class="fa fa-user-circle"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="row bg-warning my-3 shadow rounded A1">
+                <div class="col-sm-12 col-md-4 d-flex align-items-center text-center">
+                    <img src="static/images/Mettl.jpg" class="rounded my-1" alt=""
+                        style="height: 20vh;width:100%;max-height: 35vh;">
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    <div class="fs-4 pt-2 fw-bold ps-1"> Mercer | Mettl <span style="color: green;">CodeSmash 1.0</span>
+                    </div>
+                    <div class="py-2 pe-3 ps-1 fs-6">
+                        <i class="fa fa-thumbs-up" style='color:red'></i>&nbsp; Earned a
+                        <b><i>Certificate of Appreciation </i></b> for achieving an impressive overall rank
+                        of <b><i>49</i></b>.
+
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="row bg-warning my-3 shadow rounded A1">
+                <div class="col-sm-12 col-md-4 d-flex align-items-center text-center">
+                    <img src="static/images/CodechefStarters.jpg" class="rounded my-1" alt=""
+                        style="height: 20vh;width:100%;max-height: 35vh;">
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    <div class="fs-4 pt-2 fw-bold ps-1" style="color:blue"> Codechef Starters 83
+                    </div>
+                    <div class="py-2 pe-2 ps-1 fs-6">
+                        <i class="fa fa-thumbs-up" style='color:red'></i>&nbsp;Attained
+                        <b><i>Global Rank 110</i></b> in Codechef Starters 83 Contest.
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+
+            <div class="row bg-warning my-3 shadow rounded A1">
+                <div class="col-sm-12 col-md-4 d-flex align-items-center text-center">
+                    <img src="static/images/leetcodeBiweekly.jpg" class="rounded my-1" alt=""
+                        style="height: 20vh;width:100%;max-height: 35vh;">
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    <div class="fs-4 pt-2 fw-bold ps-1" style="color:magenta"> Leetcode Biweekly 101
+                    </div>
+                    <div class="py-2 pe-2 ps-1 fs-6">
+                        <i class="fa fa-thumbs-up" style='color:red'></i>&nbsp;Achieved
+                        <b><i>Global Rank 132</i></b> in Leetcode Biweekly Contest 101
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
 
 
 
@@ -389,7 +548,7 @@
                     <img src="static/images/manit.jfif" alt="" style="width:100%;height:20vh;">
                 </div>
                 <div class="col-12 col-sm-8 col-md-8">
-                    <h1 class="fs-3 fw-bold " style="color:blue;padding-left: 8%;"> Maulana Azad National Instute of
+                    <h1 class="fs-3 fw-bold " style="color:blue;padding-left: 8%;"> Maulana Azad National Institute of
                         Technology</h1>
                     <p class="fs-2" style="padding-left: 8%;color:coral">2020-2024 <span class="">|</span> <span
                             class="fw-bold fs-3 " style="color:forestgreen">Persuing</span></p>
@@ -601,7 +760,7 @@
             </div>
             <div class="col-sm-6 contact-form-wrapper d-flex justify-content-center">
                 <form action="/" class="contact-form" method="POST">
-                    <h5 class="title fs-1 fw-bold">Contact us</h5>
+                    <h5 class="title fs-1 fw-bold">Contact me</h5>
                     <p class="description">Feel free to contact me if you have any question
                         question.
                     </p>
@@ -785,7 +944,46 @@
 
 
 
+<script>
+            document.addEventListener("DOMContentLoaded", function() {
+              var animateElements = document.querySelectorAll('.A1');
+              var called=false;
+              var observer = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                  if (entry.isIntersecting || called) {
+                    entry.target.classList.add('visible');
+                    called=true;
+                    observer.unobserve(entry.target); // Stop observing once the element is visible
+                  }
+                });
+              }, {});
 
+              // Observe each animate-element with dynamic delay
+              animateElements.forEach(function(element, index) {
+                var delay = 0.2*index ; // Adjust the delay as needed
+                element.style.transitionDelay = delay + 's';
+                observer.observe(element);
+              });
+
+
+              var about = document.getElementById('about1');
+
+  var observer1 = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // Stop observing once the element is visible
+      }
+    });
+  }, {  });
+
+  // Observe the anim element
+  observer1.observe(about);
+            });
+
+
+
+          </script>
 
 
     <!--Start of Tawk.to Script-->
