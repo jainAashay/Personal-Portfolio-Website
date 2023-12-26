@@ -39,7 +39,7 @@ def home():
 
 		return render_template('index.html',data="Sign Out")
 	else:
-		return render_template('index.html',data="Login/SignUp")
+		return render_template('index.html',data="Sign In")
 
 
 
@@ -137,31 +137,29 @@ def setpassword(email):
 
 @app.route('/information',methods=["POST","GET"])
 def information():
-	if session.get('loggedin')==True:
-		if request.method=="POST":
-			schno=request.form['scno']
-			dob=str(request.form['dob'])
-			sname=request.form['Student_Name']
 
-			branch=request.form['branch']
-			yog=request.form['YOG']
+    if request.method=="POST":
+        if session.get('loggedin')!=True:
+            return render_template('login.html')
 
+        schno=request.form['scno']
+        dob=str(request.form['dob'])
+        sname=request.form['Student_Name']
+        branch=request.form['branch']
+        yog=request.form['YOG']
 
-			try:
-			    mycursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-			    x=mycursor.execute('INSERT INTO `student` ( `Scholar_No`, `DOB`, `Student_Name`, `Branch`, `YOG`) VALUES (%s,%s,%s, %s, %s)',(schno,dob,sname,branch,yog,))
-			    mysql.connection.commit()
-			    flash("Successful")
-
-
-			except (MySQLdb.Error) as e:
-			    flash("Invalid Entry !!!")
+        try:
+            mycursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+            x=mycursor.execute('INSERT INTO `student` ( `Scholar_No`, `DOB`, `Student_Name`, `Branch`, `YOG`) VALUES (%s,%s,%s, %s, %s)',(schno,dob,sname,branch,yog,))
+            if x:
+                mysql.connection.commit()
+                flash("Successful")
 
 
+        except (MySQLdb.Error) as e:
+            flash("Invalid Entry !!!")
 
-
-			return render_template('information.html')
-
+    return render_template('information.html')
 
 
 
@@ -170,19 +168,12 @@ def information():
 
 
 
-
-
-		else:
-			return render_template('information.html')
-
-	else:
-		return render_template('login.html')
 
 
 @app.route('/records',methods=['GET','POST'])
 def records():
 
-	if session.get('loggedin')==True:
+	if True:
 
 	    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 	    cursor.execute('SELECT * FROM student')
@@ -229,56 +220,54 @@ def records():
 
 
 
-
-
-
-
-
-
 @app.route("/update",methods=['GET','POST'])
 def update():
-    if session.get('loggedin')!=True:
-        return redirect('/login')
-
-    else:
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        if request.method=='POST':
-            dict={}
-            i=0
-            for x in request.form.getlist('sno[]'):
-                dict[x]=i
-                i=i+1
-
-            schno=request.form.getlist('scholarno[]')
-            dob=request.form.getlist('dob[]')
-            sname=request.form.getlist('studentname[]')
-            branch=request.form.getlist('branch[]')
-            yog=request.form.getlist('yog[]')
-            for x in request.form.getlist('sno[]'):
-
-                i=dict[x]
-                try:
-                    f=cursor.execute('UPDATE student SET Scholar_No=%s,DOB=%s,Student_Name=%s,Branch=%s,YOG=%s where sno=%s',(schno[i],dob[i],sname[i],branch[i],yog[i],x,))
-                    if f:
-                        mysql.connection.commit()
-
-                except (MySQLdb.Error) as e:
-                    flash("An error occured !!")
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    if request.method=='POST':
+        if session.get('loggedin')!=True:
+            return redirect('/login')
 
 
+        dict={}
+        i=0
+        for x in request.form.getlist('sno[]'):
+            dict[x]=i
+            i=i+1
+
+        schno=request.form.getlist('scholarno[]')
+        dob=request.form.getlist('dob[]')
+        sname=request.form.getlist('studentname[]')
+        branch=request.form.getlist('branch[]')
+        yog=request.form.getlist('yog[]')
+        for x in request.form.getlist('sno[]'):
+            i=dict[x]
+            try:
+                f=cursor.execute('UPDATE student SET Scholar_No=%s,DOB=%s,Student_Name=%s,Branch=%s,YOG=%s where sno=%s',(schno[i],dob[i],sname[i],branch[i],yog[i],x,))
+                if f:
+                    mysql.connection.commit()
+
+            except (MySQLdb.Error) as e:
+                flash("An error occured !!")
 
 
-            return redirect("/update")
-
-        cursor.execute('SELECT * FROM student')
-        records=cursor.fetchall()
-        return render_template("update.html",records=records)
+        return redirect("/update")
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+    cursor.execute('SELECT * FROM student')
+    records=cursor.fetchall()
+    return render_template("update.html",records=records)
 
 
 
@@ -288,51 +277,61 @@ def update():
 
 @app.route('/delete',methods=['GET','POST'])
 def delete():
-    if session.get('loggedin')!=True:
-        return redirect('/login')
-
-    else:
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        if request.method=='POST':
-            for x in request.form.getlist('id'):
-                x=x.replace('/','')
-                p=cursor.execute('DELETE FROM student WHERE sno = %s',(x,))
-
-                if p:
-                    mysql.connection.commit()
 
 
-            return redirect('/records')
 
-        cursor.execute('SELECT * FROM student')
-        records=cursor.fetchall()
-        return render_template('delete.html',records=records)
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    if request.method=='POST':
+        if session.get('loggedin')!=True:
+            return redirect('/login')
+
+        for x in request.form.getlist('id'):
+            x=x.replace('/','')
+            p=cursor.execute('DELETE FROM student WHERE sno = %s',(x,))
+            if p:
+                mysql.connection.commit()
+
+        return redirect('/records')
+
+    cursor.execute('SELECT * FROM student')
+    records=cursor.fetchall()
+    return render_template('delete.html',records=records)
+
+
+
+
 
 
 
 @app.route('/information/uploadData', methods=['GET', 'POST'])
 def upload_file():
-    if session.get('loggedin')!=True:
-        return redirect('/login')
 
     df=pd.DataFrame()
     if request.method == 'POST':
-        f = request.files['file']
-        df=pd.read_csv(f)
+        try:
+            f = request.files['file']
+            df=pd.read_csv(f)
+            df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
+            df=df.replace('\\n',' ')
+            if df.columns.isin(['DOB']).any():
+                df['DOB']=pd.to_datetime(df['DOB'])
+                df['DOB']=df['DOB'].dt.strftime('%Y-%m-%d')
 
-        df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
-        df=df.replace('\\n',' ')
-        if df.columns.isin(['DOB']).any():
-            df['DOB']=pd.to_datetime(df['DOB'])
-            df['DOB']=df['DOB'].dt.strftime('%Y-%m-%d')
+        except:
+            pass
+
+
 
 
         if request.form['action']=='View Data':
+
 
             return render_template('file.html',df=df)
 
 
         elif request.form['action']=='Add Data':
+            if session.get('loggedin')!=True:
+                return redirect('/login')
 
             if df.columns.isin(['Scholar No']).any() and df.columns.isin(['DOB']).any() and df.columns.isin(['Student Name']).any() and df.columns.isin(['YOG']).any() and df.columns.isin(['Branch']).any():
                 if not df.isnull().values.any():
